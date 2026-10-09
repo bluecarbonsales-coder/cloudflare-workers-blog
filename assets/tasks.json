@@ -1,0 +1,44 @@
+[
+  {
+    "id": "backup",
+    "title": "Run the Hermes backup",
+    "note": "Daily 03:00 JST job, confirm the private GitHub push succeeded.",
+    "time": "03:00"
+  },
+  {
+    "id": "gateway",
+    "title": "Check the Hermes gateway",
+    "note": "Confirm the service is active and no platform delivery errors are pending.",
+    "time": "Morning"
+  },
+  {
+    "id": "cloudflare",
+    "title": "Check Cloudflare services",
+    "note": "Workers, DNS records, routes and published links respond as expected.",
+    "time": "Morning"
+  },
+  {
+    "id": "site",
+    "title": "Verify the website",
+    "note": "The main site and this blog return the correct pages through the edge.",
+    "time": "Morning"
+  },
+  {
+    "id": "containers",
+    "title": "Spot-check containers and tunnels",
+    "note": "Review container health and Cloudflare tunnel connections.",
+    "time": "Anytime"
+  },
+  {
+    "id": "cron",
+    "title": "Review cron results",
+    "note": "Investigate failed scheduled jobs and confirm the next runs are healthy.",
+    "time": "After backup"
+  },
+  {
+    "id": "notes",
+    "title": "Record follow-ups",
+    "note": "Capture completed work and open questions in the task history.",
+    "time": "End of day"
+  }
+]

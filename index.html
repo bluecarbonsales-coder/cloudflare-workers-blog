@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Daily Ops Blog</title>
+  <meta name="description" content="A serverless operational blog served by Cloudflare Workers from GitHub Pages.">
+  <link rel="canonical" href="https://blog.nafisainternational.com/">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">Daily Ops Blog</a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="daily.html">Daily Tasks</a>
+      <a href="posts/serverless-blog.html">Posts</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <section class="intro">
+      <p class="eyebrow">October 9, 2026</p>
+      <h1>Serverless blog for daily operations</h1>
+      <p class="lede">Published from GitHub Pages, served at the edge by a Cloudflare Worker, with no origin server or database.</p>
+    </section>
+
+    <section class="status-grid" aria-label="Current status">
+      <article class="status-card">
+        <h2>Storage</h2>
+        <p>GitHub Pages</p>
+      </article>
+      <article class="status-card">
+        <h2>Edge</h2>
+        <p>Cloudflare Workers</p>
+      </article>
+      <article class="status-card">
+        <h2>Hermes backup</h2>
+        <p>GitHub</p>
+      </article>
+    </section>
+
+    <div class="columns">
+      <section class="panel">
+        <h2>Latest posts</h2>
+        <ul class="post-list">
+          <li>
+            <a href="posts/serverless-blog.html">How this blog is served</a>
+          </li>
+          <li>
+            <a href="posts/backup-status.html">Hermes memory backup status</a>
+          </li>
+          <li>
+            <a href="posts/daily-ops.html">Everyday operational tasks</a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="panel">
+        <h2>Today's checklist</h2>
+        <div id="task-list" class="task-list" aria-live="polite">
+          <p class="loading">Loading tasks...</p>
+        </div>
+        <div class="task-actions">
+          <button id="reset-tasks" type="button">Reset</button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>GitHub Pages + Cloudflare Workers</p>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How this blog is served - Daily Ops Blog</title>
+  <meta name="description" content="The serverless architecture behind this blog: GitHub Pages storage and a Cloudflare Worker at the edge.">
+  <link rel="canonical" href="https://blog.nafisainternational.com/posts/serverless-blog.html">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../index.html">Daily Ops Blog</a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="../index.html">Home</a>
+      <a href="../daily.html">Daily Tasks</a>
+      <a href="serverless-blog.html" aria-current="page">Posts</a>
+    </nav>
+  </header>
+
+  <main class="page article">
+    <section class="intro">
+      <p class="eyebrow">Post</p>
+      <h1>How this blog is served</h1>
+      <p class="lede">GitHub Pages holds the files. Cloudflare Workers serves them under blog.nafisainternational.com.</p>
+    </section>
+
+    <article class="panel">
+      <h2>Architecture</h2>
+      <p>This blog is a static site. The HTML, CSS, JavaScript and task data live in a public GitHub repository, and GitHub Pages publishes that directory as a website. There is no application server and no database.</p>
+      <p>The public URL runs through a Cloudflare Worker. The Worker proxies the same static output from GitHub Pages and adds edge caching, so readers get the site from Cloudflare's network while the source remains easy to update from GitHub.</p>
+
+      <h2>Why this setup</h2>
+      <ul>
+        <li>No origin server to patch or maintain.</li>
+        <li>Content changes are ordinary GitHub commits.</li>
+        <li>Cloudflare handles HTTPS, caching and routing.</li>
+        <li>Costs stay at the free tier for both services.</li>
+      </ul>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>GitHub Pages + Cloudflare Workers</p>
+  </footer>
+</body>
+</html>

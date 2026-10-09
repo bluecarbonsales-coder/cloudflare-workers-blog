@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Daily Tasks - Daily Ops Blog</title>
+  <meta name="description" content="Everyday operational tasks for the Hermes and Cloudflare environment.">
+  <link rel="canonical" href="https://blog.nafisainternational.com/daily.html">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">Daily Ops Blog</a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="daily.html" aria-current="page">Daily Tasks</a>
+      <a href="posts/serverless-blog.html">Posts</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <section class="intro">
+      <p class="eyebrow">Routine</p>
+      <h1>Everyday tasks</h1>
+      <p class="lede">A small operational checklist. Progress is kept locally in the browser and can be reset each day.</p>
+    </section>
+
+    <section class="panel task-panel">
+      <div class="task-heading">
+        <h2>Today's checklist</h2>
+        <p id="task-progress" class="progress-text">0 of 0 done</p>
+      </div>
+      <div id="task-list" class="task-list" aria-live="polite">
+        <p class="loading">Loading tasks...</p>
+      </div>
+      <div class="task-actions">
+        <button id="reset-tasks" type="button">Reset</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>GitHub Pages + Cloudflare Workers</p>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

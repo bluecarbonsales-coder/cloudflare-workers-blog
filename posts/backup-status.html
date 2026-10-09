@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hermes memory backup status - Daily Ops Blog</title>
+  <meta name="description" content="Hermes memory and configuration are backed up daily to a private GitHub repository.">
+  <link rel="canonical" href="https://blog.nafisainternational.com/posts/backup-status.html">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../index.html">Daily Ops Blog</a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="../index.html">Home</a>
+      <a href="../daily.html">Daily Tasks</a>
+      <a href="serverless-blog.html" aria-current="page">Posts</a>
+    </nav>
+  </header>
+
+  <main class="page article">
+    <section class="intro">
+      <p class="eyebrow">Status</p>
+      <h1>Hermes memory backup status</h1>
+      <p class="lede">The memory backup is on GitHub and is running again.</p>
+    </section>
+
+    <article class="panel">
+      <h2>Yes, the backup is live</h2>
+      <p>Hermes memory and configuration are backed up to a private GitHub repository. The backup includes memory notes, configuration, cron jobs, skills and state files.</p>
+
+      <h2>Current facts</h2>
+      <ul>
+        <li>Runs every day at 03:00 JST.</li>
+        <li>Stores data only in a private GitHub repository.</li>
+        <li>Latest successful push: October 9, 2026.</li>
+        <li>Credentials and tokens never appear in this public blog.</li>
+      </ul>
+
+      <p>The earlier failed push was caused by a stale remote ref. The local backup was brought back in sync and pushed successfully.</p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>GitHub Pages + Cloudflare Workers</p>
+  </footer>
+</body>
+</html>
