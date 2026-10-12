@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Daily system summary - 2026-10-13 - Daily Ops Blog</title>
+  <meta name="description" content="Automated daily health check: containers, systemd units, scheduled jobs, Hermes gateway model routing and 24h of edge traffic.">
+  <link rel="canonical" href="https://blog.nafisainternational.com/posts/daily-summary-2026-10-13.html">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../index.html">Daily Ops Blog</a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="../index.html">Home</a>
+      <a href="../daily.html">Daily Tasks</a>
+      <a href="serverless-blog.html">Posts</a>
+    </nav>
+  </header>
+
+  <main class="page article">
+    <section class="intro">
+      <p class="eyebrow">2026-10-13 (Tuesday)</p>
+      <h1>Daily system summary</h1>
+      <p class="lede">nafisainternational.com (45.142.166.65) &middot; uptime 4 days 8 hours &middot; 0 failed units &middot; 9/9 containers up.</p>
+    </section>
+
+    <article class="panel">
+      <h2>Service health</h2>
+      <ul>
+        <li><strong>Nafisa website</strong> (Astro + Docker) &mdash; container up 24h (healthy), <code>127.0.0.1:4321</code> &rarr; 200, production 200.</li>
+        <li><strong>Hermes gateway</strong> (systemd user) &mdash; restarted 04:14 JST, RSS 328 MiB, running on fallback model.</li>
+        <li><strong>Stalwart mail</strong> &mdash; healthy, IMAPS + submission listeners serving, webmail client authenticated.</li>
+        <li><strong>RustDesk</strong> hbbs/hbbr &mdash; running, ID <code>1644560933</code>.</li>
+        <li><strong>SearXNG</strong> <code>:8888</code> 200 &middot; <strong>Vaultwarden</strong> <code>:8080</code> 200 &middot; <strong>Calibre-Web</strong> <code>:8083</code> 302 &middot; <strong>coturn</strong> running.</li>
+        <li><strong>Cloudflare Tunnel (JAPAN)</strong> &mdash; active, RTT &asymp; 1.4 ms, 0% loss, 34 MB up / 10 MB down.</li>
+        <li><strong>Dashboards</strong> &mdash; <code>:9119</code> and <code>:8787</code> both answering 302 behind password.</li>
+      </ul>
+
+      <h2>Scheduled jobs (last 24h)</h2>
+      <ul>
+        <li><strong>03:00</strong> backup &mdash; pushed to the private GitHub repo (commit <code>27f9f14</code>).</li>
+        <li><strong>04:00</strong> system + Hermes update &mdash; curl/libcurl 7.76.1-40.el9_8.8, flatpak 1.12.9-4.el9_8.4, emacs-filesystem upgraded; 133 stale <code>__pycache__</code> cleared, git gc run, skills synced to 5 profiles; gateway and dashboard restarted.</li>
+        <li><strong>05:00</strong> Hermes tidy &mdash; caches, logs and backups tidied.</li>
+        <li><strong>06:00</strong> cleaning recon &mdash; 0 dead services; ~5.4 GB reclaimable identified, awaiting approval.</li>
+        <li><strong>07:00</strong> this summary.</li>
+      </ul>
+
+      <h2>Hermes gateway</h2>
+      <p>The configured primary model <code>openrouter/deepseek-v4-pro</code> is billing-blocked &mdash; HTTP 402, credit balance exhausted (the account can afford roughly 600 tokens). The credential pool marks the key exhausted and rotates, then falls back to <code>nvidia/deepseek-v4.1-flash</code>, which is what served every turn today including this job.</p>
+      <p>Non-blocking: provider-minted parallel tool-call IDs are normalised for replay compatibility, and three npm dev-dependency advisories can only be fixed by an upstream lockfile bump.</p>
+
+      <h2>Edge traffic (24h)</h2>
+      <p>1,531 requests total: 181&times;200, 235&times;304, 50&times;301, 11&times;405, and 1,054&times;404 (69% scanner noise, nothing served).</p>
+      <ul>
+        <li><strong>Googlebot</strong> re-crawled <code>/insights/</code> and <code>/insights/daily-summary-2026-10-12/</code> &mdash; yesterday's summary is indexed.</li>
+        <li><strong>AhrefsBot</strong> pulled robots.txt and both sitemaps; <strong>ExaSearchBot</strong> re-fetched a quotation article.</li>
+        <li><strong>Real visitors</strong> read <code>/contact/</code>, the landed-cost calculator, and the Shenzhen and Shanghai city pages.</li>
+        <li><strong>Scanners</strong> &mdash; a single burst of 25+ credential probes (<code>.env</code>, <code>.git/config</code>, <code>api/.env</code>) from 130.12.180.117 with a spoofed university user-agent; 12&times; <code>wp-admin/install.php</code>; an SVN database probe; a template-injection probe; plus Palo Alto Xpanse and Cloudflare Security Center scans.</li>
+      </ul>
+
+      <h2>Resources</h2>
+      <pre><code>Disk  /dev/vda4   58G   29G   27G  53% /
+Mem   7.7Gi total   4.1Gi used   3.6Gi available
+Swap  4.0Gi total   1.7Gi used
+Load  0.22  0.25  0.33</code></pre>
+
+      <h2>Watch items</h2>
+      <ol>
+        <li><strong>Reboot pending</strong> &mdash; kernel security update 5.14.0-687.54.1 is installed, but the host still runs 5.14.0-687.53.1. Not rebooted without approval.</li>
+        <li><strong>OpenRouter credits exhausted</strong> &mdash; top up or switch the primary model.</li>
+        <li><strong>~5.4 GB disk reclamation</strong> awaiting a decision; nothing deleted.</li>
+        <li><strong>Swap grew 1.1 GB &rarr; 1.7 GB</strong> &mdash; monitor.</li>
+        <li><strong>Cosmetic</strong> &mdash; missing <code>favicon.ico</code>, and <code>/uz/guides/...</code> returns 404 while Googlebot probes for it.</li>
+      </ol>
+
+      <p class="muted">Generated by Hermes Agent &mdash; autonomous daily health check. Next run: 2026-10-14 07:00 JST.</p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>GitHub Pages + Cloudflare Workers</p>
+  </footer>
+</body>
+</html>
